@@ -3,9 +3,12 @@ public class Main {
         // new instance of AddressBook
         AddressBook contacts = new AddressBook();
         //new instance of contact and add in AddressBook
-        Contact contact1 = new Contact("John Doe", 1234567890, "john@example.com");
-        toPrint(contact1);
-        contacts.addContact(contact1);
+        Contact contact_1 = new Contact("John Doe", "1234567890", "john@example.com");
+        toPrint(contact_1);
+        contacts.addContact(contact_1);
+        // Updating contact
+        contacts.updateContact("John Doe", "5555555555", null);
+        toPrint(contact_1);
     }
 
     public static void toPrint(Contact contact){
