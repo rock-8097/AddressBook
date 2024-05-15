@@ -1,10 +1,10 @@
 class Contact {
     // instance variable
     private String name;
-    private int phone;
+    private String phone;
     private String email;
     //constructor
-    public Contact(String name, int phone, String email) {
+    public Contact(String name, String phone, String email) {
         this.name = name;
         this.phone = phone;
         this.email = email;
@@ -19,11 +19,11 @@ class Contact {
         this.name = name;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
