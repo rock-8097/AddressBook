@@ -1,26 +1,52 @@
+import java.util.Scanner;
+
 public class Main {
     public static void data(){
+        Scanner scan = new Scanner(System.in);
         // new AddressBook
         AddressBook abook = new AddressBook();
-        //new contact and add in AddressBook
-        Contact contact_1 = new Contact("John Doe", "1234567890", "john@example.com");
-        Contact contact_2 = new Contact("eee Doe", "1234", "@example.com");
-        abook.addContact(contact_1);
-        abook.addContact(contact_2);
-        // abook.displayContacts();
-        // Updating contact
-        Contact contact_3 = new Contact("ohh Doe", "3215", "example@.com");
-        abook.updateContact(contact_1,contact_3);
-        //delete contact
-        abook.deleteContact(contact_2);
-        //display all contacts
+        boolean addingContacts = true;
+
+        while (addingContacts) {
+            // abook.addContact(newConnection(scan));
+            System.out.println("\nChoose an option:");
+            System.out.println("1. Add another contact");
+            System.out.println("2. Update a contact");
+            System.out.println("3. Delete a contact");
+            System.out.println("Press any other key Exit");
+            String choice = scan.nextLine();
+            switch (choice) {
+                case "1":
+                    abook.addContact(newConnection(scan));
+                    break;                
+                case "2":
+                    System.out.print("Enter the name of the contact you want to update: ");
+                    String toupdate_name = scan.nextLine();
+                    Contact updated = newConnection(scan);
+                    abook.updateContact(toupdate_name, updated);
+                    break;
+                case "3":
+                    System.out.print("Enter the name of the contact you want to update: ");
+                    String todelete = scan.nextLine();
+                    abook.deleteContact(todelete);
+                    break;
+                default:
+                    addingContacts = false;
+                    break;
+            }
+            
+        }
         abook.displayContacts();
     }
-
-    public static void toPrint(Contact contact){
-        System.out.println("Name: " + contact.getName());
-        System.out.println("Phone: " + contact.getPhone());
-        System.out.println("Email: " + contact.getEmail());
+    public static Contact newConnection(Scanner scanner){
+        System.out.println("Enter contact details:");
+            System.out.print("Name: ");
+            String name = scanner.nextLine();
+            System.out.print("Phone Number: ");
+            String phone = scanner.nextLine();
+            System.out.print("Email: ");
+            String email = scanner.nextLine();
+            return new Contact(name, phone, email);
     }
 
     public static void main(String[] args) {
