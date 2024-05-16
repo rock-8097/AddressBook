@@ -11,19 +11,26 @@ public class AddressBook {
     public void addContact(Contact contact) {
         contacts.add(contact);
     }
-    public List<Contact> getAllContacts() {
-        return contacts;
+    // public List<Contact> getAllContacts() {
+    //     return contacts;
+    // }
+
+    public void updateContact(Contact oldContact, Contact newContact) {
+        int index = contacts.indexOf(oldContact);
+        if (index != -1) {
+            contacts.set(index, newContact);
+        } else {
+            System.out.println("Contact not found.");
+        }
     }
 
-    public boolean updateContact(String newName, String newPhone, String newEmail) {
+    public void deleteContact(Contact contact) {
+        contacts.remove(contact);
+    }
+
+    public void displayContacts() {
         for (Contact contact : contacts) {
-            if (contact.getName().equals(newName) || contact.getPhone().equals(newPhone) || contact.getEmail().equals(newEmail)) {
-                contact.setPhone(newName);// Update the name
-                contact.setPhone(newPhone);// Update the phone number
-                contact.setEmail(newEmail);// Update the email
-                return true;// contact matched
-            }
+            System.out.println(contact);
         }
-        return false;// contact not matched
     }
 }
